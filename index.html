@@ -341,41 +341,56 @@
     }
     .pillars__grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-4);
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
     }
     .pillar-card {
       background: var(--color-bg);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-xl);
-      padding: var(--space-8);
+      padding: var(--space-6) var(--space-8);
       position: relative;
       overflow: hidden;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      column-gap: var(--space-6);
+      align-items: start;
     }
-    .pillar-card::after {
+    .pillar-card::before {
       content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      border-radius: var(--radius-xl) 0 0 var(--radius-xl);
     }
-    .pillar-card:nth-child(1)::after { background: var(--color-primary); }
-    .pillar-card:nth-child(2)::after { background: var(--color-secondary); }
-    .pillar-card:nth-child(3)::after { background: var(--color-gold); }
-    .pillar-card:nth-child(4)::after { background: oklch(from var(--color-primary) 0.4 0.08 250); }
+    .pillar-card:nth-child(1)::before { background: var(--color-primary); }
+    .pillar-card:nth-child(2)::before { background: var(--color-secondary); }
+    .pillar-card:nth-child(3)::before { background: var(--color-gold); }
+    .pillar-card:nth-child(4)::before { background: oklch(from var(--color-primary) 0.4 0.08 250); }
     .pillar-card__sanskrit {
       font-family: var(--font-display);
-      font-size: var(--text-xl); font-style: italic;
-      color: var(--color-primary); margin-bottom: var(--space-2);
+      font-size: var(--text-lg); font-style: italic;
+      color: var(--color-primary);
+      grid-column: 1; grid-row: 1 / span 2;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      display: flex; align-items: center;
+      padding-right: var(--space-2);
+      border-right: 1px solid var(--color-divider);
+      min-height: 80px;
     }
     .pillar-card:nth-child(2) .pillar-card__sanskrit { color: var(--color-secondary); }
     .pillar-card:nth-child(3) .pillar-card__sanskrit { color: var(--color-gold); }
     .pillar-card:nth-child(4) .pillar-card__sanskrit { color: oklch(from var(--color-primary) 0.5 0.1 250); }
     .pillar-card__concept {
-      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--color-text-muted); margin-bottom: var(--space-4);
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-text-faint); margin-bottom: var(--space-1);
+      grid-column: 2; grid-row: 1;
     }
     .pillar-card__title {
       font-size: var(--text-base); font-weight: 600; color: var(--color-text);
-      margin-bottom: var(--space-2);
+      grid-column: 2; grid-row: 2;
+      line-height: 1.4;
     }
 
     /* ===== BACKGROUND & CONTEXT ===== */
@@ -606,6 +621,7 @@
       .navbar__nav { display: none; }
       .locations__grid { grid-template-columns: repeat(2, 1fr); }
       .vision__cards { grid-template-columns: repeat(2, 1fr); }
+      .pillars__grid { grid-template-columns: 1fr; }
       .hamburger { display: flex; }
       .context__grid { grid-template-columns: 1fr; }
       .context__visual { position: static; }
@@ -615,7 +631,6 @@
       .vision__cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      .pillars__grid { grid-template-columns: 1fr; }
       .locations__grid { grid-template-columns: 1fr; }
       .hero__actions { flex-direction: column; align-items: flex-start; }
       .pillars__grid { grid-template-columns: repeat(2, 1fr); }
@@ -976,7 +991,7 @@
           <div class="why-card reveal reveal-delay-3">
             <div class="why-card__num" aria-hidden="true">04</div>
             <div class="why-card__title">Proven Academic Strength</div>
-            <div class="why-card__desc">India has demonstrated educational excellence in mathematics, science, and engineering. The next opportunity is to bring a broader, more holistic Indian model to the global stage.</div>
+            <div class="why-card__desc">East-West educational frameworks have separately demonstrated excellence — rigour and analytical depth on one side, holistic thinking and self-awareness on the other. The opportunity now is to bring both together into a single, coherent global model.</div>
           </div>
         </div>
       </div>
